@@ -34,13 +34,25 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <RestoreProjectStyle>PackageReference</RestoreProjectStyle>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Win32.Registry, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Win32.Registry.4.4.0\lib\net461\Microsoft.Win32.Registry.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.DirectoryServices" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Security.AccessControl, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.AccessControl.4.4.0\lib\net461\System.Security.AccessControl.dll</HintPath>
+    </Reference>
     <Reference Include="System.Security.Cryptography.Xml, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Security.Cryptography.Xml.4.4.2\lib\net461\System.Security.Cryptography.Xml.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Security.Principal.Windows, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Security.Principal.Windows.4.4.0\lib\net461\System.Security.Principal.Windows.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Drawing" />
@@ -833,8 +845,10 @@
     <Compile Include="Needed_because_of_INTERNAL_modifier\UnifiedMessaging\PhoneCall.cs" />
     <Compile Include="Needed_because_of_INTERNAL_modifier\UnifiedMessaging\PhoneCallId.cs" />
     <Compile Include="Needed_because_of_INTERNAL_modifier\UnifiedMessaging\UnifiedMessaging.cs" />
-    <Compile Include="SecretManager.cs" />
-    <Compile Include="UserData.cs" />
+    <Compile Include="Credentials\SecretManager.cs" />
+    <Compile Include="TestHelper.cs" />
+    <Compile Include="TestLdap.cs" />
+    <Compile Include="Credentials\UserData.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -865,6 +879,20 @@
     <Content Include="Needed_because_of_INTERNAL_modifier\Docs\README.htm" />
     <Content Include="Needed_because_of_INTERNAL_modifier\Docs\Redist.txt" />
     <Content Include="Needed_because_of_INTERNAL_modifier\license.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ARSoft.Tools.Net\ARSoft.Tools.Net.csproj">
+      <Project>{7ded1d29-830f-4913-8351-3f83d28b5404}</Project>
+      <Name>ARSoft.Tools.Net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Novell.Directory.Ldap\Novell.Directory.Ldap.csproj">
+      <Project>{d69774f8-4452-4a38-9532-f0f0932cab55}</Project>
+      <Name>Novell.Directory.Ldap</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Novell.Samples\Novell.Samples.csproj">
+      <Project>{0ddffc65-93a2-42db-802f-af907a207dcd}</Project>
+      <Name>Novell.Samples</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,7 +1,7 @@
 ﻿
 namespace MySamples
 {
-    class TestSettings
+    public class TestSettings
     {
 
         public static string ldapHost = SecretManager.GetSecret<string>("ldapHost"); // args[0];
