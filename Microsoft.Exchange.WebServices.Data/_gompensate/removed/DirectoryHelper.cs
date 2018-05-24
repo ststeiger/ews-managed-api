@@ -10,7 +10,7 @@ namespace Microsoft.Exchange.WebServices.Autodiscover
     /// <summary>
     /// Represents a set of helper methods for using Active Directory services.
     /// </summary>
-    internal class DirectoryHelper
+    internal class DirectoryHelper111
     {
 
         /// <summary>
@@ -43,7 +43,7 @@ namespace Microsoft.Exchange.WebServices.Autodiscover
         }
         
         
-        public DirectoryHelper(ExchangeServiceBase service)
+        public DirectoryHelper111(ExchangeServiceBase service)
         {
             this.service = service;
         }

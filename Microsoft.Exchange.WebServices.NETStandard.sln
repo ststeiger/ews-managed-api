@@ -17,6 +17,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Novell.Samples", "Novell.Sa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Microsoft.Exchange.WebServices.Data", "Microsoft.Exchange.WebServices.Data\Microsoft.Exchange.WebServices.Data.csproj", "{54C8CB80-7487-4E2B-9EFE-DE2D4F7B3C79}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ldap_service", "ldap_service\ldap_service.csproj", "{4B8EA6FE-EC28-4C0C-8F50-47B899318A23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libldapsync", "libldapsync\libldapsync.csproj", "{82779AC7-16BF-48CE-B152-3A0829585EAC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +55,14 @@ Global
 		{54C8CB80-7487-4E2B-9EFE-DE2D4F7B3C79}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{54C8CB80-7487-4E2B-9EFE-DE2D4F7B3C79}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{54C8CB80-7487-4E2B-9EFE-DE2D4F7B3C79}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B8EA6FE-EC28-4C0C-8F50-47B899318A23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B8EA6FE-EC28-4C0C-8F50-47B899318A23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B8EA6FE-EC28-4C0C-8F50-47B899318A23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B8EA6FE-EC28-4C0C-8F50-47B899318A23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82779AC7-16BF-48CE-B152-3A0829585EAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82779AC7-16BF-48CE-B152-3A0829585EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82779AC7-16BF-48CE-B152-3A0829585EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82779AC7-16BF-48CE-B152-3A0829585EAC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

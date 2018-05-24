@@ -23,8 +23,9 @@ namespace CrapDAP
             Application.Run(new Form1());
 #endif
             // TestHelper.Test();
-            TestLdap.GetGroups();
-            TestLdap.GetUsers();
+            // TestLdap.GetGroups();
+            // TestLdap.GetUsers();
+            TestLdap.GetExchange();
 
             System.Console.WriteLine(System.Environment.NewLine);
             System.Console.WriteLine(" --- Press any key to continue --- ");
