@@ -24,7 +24,7 @@ namespace ldap_service
                        , Novell.Directory.Ldap.LdapException.NO_RESULTS_RETURNED
                    );
             }
-
+            
             if (values.Length > 1)
             {
                 throw new Novell.Directory.Ldap.LdapLocalException(
@@ -33,7 +33,7 @@ namespace ldap_service
                         , Novell.Directory.Ldap.LdapException.CONSTRAINT_VIOLATION
                     );
             }
-
+            
             return values[0];
         } // End Function GetScalarContext 
 
@@ -80,6 +80,23 @@ namespace ldap_service
 
         static void Main(string[] args)
         {
+            GetGroupMembers();
+        }
+
+        static string CalculateMd5(string filename)
+        {
+            using (var md5 = System.Security.Cryptography.MD5.Create())
+            {
+                using (var stream = System.IO.File.OpenRead(filename))
+                {
+                    var hash = md5.ComputeHash(stream);
+                    return BitConverter.ToString(hash).Replace("-", "").ToLowerInvariant();
+                }
+            }
+        }
+        
+        static void GetGroupMembers()
+        {
             string ldapHost = MySamples.TestSettings.ldapHost;
             int ldapPort = MySamples.TestSettings.ldapPort;//System.Convert.ToInt32(args[1]);
 
@@ -100,11 +117,10 @@ namespace ldap_service
             //{
             //    valid = context.ValidateCredentials("username", "password");
             //}
-
-
-
+            
             bool bException = false;
-            using (System.DirectoryServices.DirectoryEntry ldapConnection = new System.DirectoryServices.DirectoryEntry(msldap, loginDN, password))
+            using (System.DirectoryServices.DirectoryEntry ldapConnection = 
+                new System.DirectoryServices.DirectoryEntry(msldap, loginDN, password))
             {
                 try
                 {
@@ -119,15 +135,17 @@ namespace ldap_service
                     System.Console.WriteLine(ex.StackTrace);
                     throw new System.InvalidOperationException("Cannot login with wrong credentials or LDAP-Path.");
                 }
-
-                using (System.DirectoryServices.DirectorySearcher dsSearcher = new System.DirectoryServices.DirectorySearcher(ldapConnection))
+                
+                using (System.DirectoryServices.DirectorySearcher dsSearcher = 
+                    new System.DirectoryServices.DirectorySearcher(ldapConnection))
                 {
                     dsSearcher.SearchScope = System.DirectoryServices.SearchScope.Subtree;
                     dsSearcher.Filter = "(&(objectCategory=group)(CN=" + strGroup + "))";
-
-                    using (System.DirectoryServices.SearchResultCollection srcSearchResultCollection = dsSearcher.FindAll())
+                    
+                    using (System.DirectoryServices.SearchResultCollection srcSearchResultCollection = 
+                        dsSearcher.FindAll())
                     { 
-
+                        
                         try
                         {
                             foreach (System.DirectoryServices.SearchResult srSearchResult in srcSearchResultCollection)
@@ -155,7 +173,7 @@ namespace ldap_service
                 } // End Using dsSearcher 
 
             } // End Using ldapConnection
-
+            
             System.Console.WriteLine(System.Environment.NewLine);
             System.Console.WriteLine(" --- Press any key to continue --- ");
             System.Console.ReadKey();
