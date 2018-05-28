@@ -1,5 +1,9 @@
 ﻿using System;
 
+using System.Net;
+
+
+
 namespace ldap_service
 {
     class Program
@@ -95,14 +99,15 @@ namespace ldap_service
             }
         }
         
+        
         static void GetGroupMembers()
         {
             string ldapHost = MySamples.TestSettings.ldapHost;
             int ldapPort = MySamples.TestSettings.ldapPort;//System.Convert.ToInt32(args[1]);
 
             string msldap = $"LDAP://{ldapHost}:{ldapPort}/DC=COR,DC=local";
-            string ms1 = "LDAP://cor-AD02.cor.local:389/OU=Gruppen,OU=COR,DC=COR,DC=local";
-
+            string ms1 = $"LDAP://{ldapHost}:{ldapPort}/OU=Gruppen,OU=COR,DC=COR,DC=local";
+            
             string loginDN = MySamples.TestSettings.loginDN; // args[2];
             string password = MySamples.TestSettings.password; // args[3];
 
