@@ -21,7 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ldap_service", "ldap_servic
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "libldapsync", "libldapsync\libldapsync.csproj", "{82779AC7-16BF-48CE-B152-3A0829585EAC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeCodeSamples", "ExchangeCodeSamples\ExchangeCodeSamples.csproj", "{9CE83E7A-4DD1-452D-972D-665D8F93DF94}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ExchangeCodeSamples", "ExchangeCodeSamples\ExchangeCodeSamples.csproj", "{9CE83E7A-4DD1-452D-972D-665D8F93DF94}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Microsoft.Exchange.WebServices.Data.NetFramework4", "Microsoft.Exchange.WebServices.Data.NetFramework4\Microsoft.Exchange.WebServices.Data.NetFramework4.csproj", "{279A032C-5200-4DFE-9213-9C7E545D130B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -69,6 +71,10 @@ Global
 		{9CE83E7A-4DD1-452D-972D-665D8F93DF94}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9CE83E7A-4DD1-452D-972D-665D8F93DF94}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9CE83E7A-4DD1-452D-972D-665D8F93DF94}.Release|Any CPU.Build.0 = Release|Any CPU
+		{279A032C-5200-4DFE-9213-9C7E545D130B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{279A032C-5200-4DFE-9213-9C7E545D130B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{279A032C-5200-4DFE-9213-9C7E545D130B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{279A032C-5200-4DFE-9213-9C7E545D130B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
