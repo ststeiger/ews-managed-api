@@ -1,4 +1,7 @@
 ﻿
+using System.Reflection;
+
+
 namespace System
 {
 
@@ -39,31 +42,133 @@ namespace System
             throw new NotImplementedException();
             return null;
         }
-
-
+        
+        
     }
-
-
-
+    
+    
+    
+    
     public static class DateTimeExtensions
     {
+        private static System.Reflection.FieldInfo s_dateData;
+        private static readonly int[] DaysToMonth365;
+        private static readonly int[] DaysToMonth366;
+        
+     
+        
+        static DateTimeExtensions()
+        {
+            s_dateData = typeof(System.DateTime).GetField("dateData", BindingFlags.Instance | BindingFlags.NonPublic);
+            
+            DaysToMonth365 = new int[13]
+            {
+                0,
+                31,
+                59,
+                90,
+                120,
+                151,
+                181,
+                212,
+                243,
+                273,
+                304,
+                334,
+                365
+            };
+        
+            DaysToMonth366 = new int[13]
+            {
+                0,
+                31,
+                60,
+                91,
+                121,
+                152,
+                182,
+                213,
+                244,
+                274,
+                305,
+                335,
+                366
+            };
+            
+        }
+        
+        
         public static bool IsAmbiguousDaylightSavingTime(this System.DateTime dte)
         {
-            throw new NotImplementedException();
-            return false;
+            const UInt64 flagsMask             = 0xC000000000000000;
+            const UInt64 kindLocalAmbiguousDst = 0xC000000000000000;
+            ulong dateData = (ulong) s_dateData.GetValue(dte);
+            ulong  internalKind = (dateData & flagsMask);
+            
+            return (internalKind == kindLocalAmbiguousDst);
         }
-
-        public static void GetDatePart(this System.DateTime dte, out int timeOfDayYear, out int timeOfDayMonth, out int timeOfDayDay)
+        
+        
+        // Exactly the same as GetDatePart(int part), except computing all of
+        // year/month/day rather than just one of them.  Used when all three
+        // are needed rather than redoing the computations for each.
+        internal static void GetDatePart(this System.DateTime dte, out int year, out int month, out int day)
         {
-            throw new NotImplementedException();
-            timeOfDayYear = 0;
-            timeOfDayMonth = 0;
-            timeOfDayDay = 0;
+            ulong dateData = (ulong) s_dateData.GetValue(dte);
+            long internalTicks =  (long) dateData & 4611686018427387903L;
+            
+            const long TicksPerDay = 864000000000; 
+            const int DaysPer400Years = 146097;
+            const int DaysPer100Years = 36524;
+            const int DaysPer4Years = 1461;
+            const int DaysPerYear = 365;
+            
+            Int64 ticks = internalTicks;
+            // n = number of days since 1/1/0001
+            int n = (int)(ticks / TicksPerDay);
+            // y400 = number of whole 400-year periods since 1/1/0001
+            int y400 = n / DaysPer400Years;
+            // n = day number within 400-year period
+            n -= y400 * DaysPer400Years;
+            // y100 = number of whole 100-year periods within 400-year period
+            int y100 = n / DaysPer100Years;
+            // Last 100-year period has an extra day, so decrement result if 4
+            if (y100 == 4) y100 = 3;
+            // n = day number within 100-year period
+            n -= y100 * DaysPer100Years;
+            // y4 = number of whole 4-year periods within 100-year period
+            int y4 = n / DaysPer4Years;
+            // n = day number within 4-year period
+            n -= y4 * DaysPer4Years;
+            // y1 = number of whole years within 4-year period
+            int y1 = n / DaysPerYear;
+            // Last year has an extra day, so decrement result if 4
+            if (y1 == 4) y1 = 3;
+            // compute year
+            year = y400 * 400 + y100 * 100 + y4 * 4 + y1 + 1;
+            // n = day number within year
+            n -= y1 * DaysPerYear;
+            // dayOfYear = n + 1;
+            // Leap year calculation looks different from IsLeapYear since y1, y4,
+            // and y100 are relative to year 1, not year 0
+            bool leapYear = y1 == 3 && (y4 != 24 || y100 == 3);
+            int[] days = leapYear ? DaysToMonth366 : DaysToMonth365;
+            // All months have less than 32 days, so n >> 5 is a good conservative
+            // estimate for the month
+            int m = (n >> 5) + 1;
+            // m = 1-based month number
+            while (n >= days[m]) m++;
+            // compute month and day
+            month = m;
+            day = n - days[m - 1] + 1;
         }
-
-
+        
+        
     }
-
+    
+    
+    
+    
     namespace Threading
     {
         public static class Monitor2
@@ -74,9 +179,10 @@ namespace System
             }
         }
     }
-
-
-
+    
+    
+    
+    
     namespace Runtime.Serialization
     {
         public static class SerializationInfoExtensions
@@ -95,9 +201,10 @@ namespace System
             }
         }
     }
-
-
-
+    
+    
+    
+    
     public static class SR
     {
 
@@ -132,9 +239,9 @@ namespace System
         {
             return string.Format(format, parameters);
         }
-
-
+        
+        
     }
-
-
+    
+    
 }
