@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Microsoft.Exchange.WebServices.Data.NetFramework4</RootNamespace>
     <AssemblyName>Microsoft.Exchange.WebServices.Data.NetFramework4</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -819,6 +820,32 @@
     <Compile Include="UnifiedMessaging\PhoneCall.cs" />
     <Compile Include="UnifiedMessaging\PhoneCallId.cs" />
     <Compile Include="UnifiedMessaging\UnifiedMessaging.cs" />
+    <Compile Include="_NET_20\AdjustmentRule.cs" />
+    <Compile Include="_NET_20\DaylightTimeStruct.cs" />
+    <Compile Include="_NET_20\InvalidTimeZoneException.cs" />
+    <Compile Include="_NET_20\__TODO_NotImplemented.cs" />
+    <Compile Include="_NET_20\LINQ\Check.cs" />
+    <Compile Include="_NET_20\LINQ\Enumerable.cs" />
+    <Compile Include="_NET_20\LINQ\ExtensionAttribute.cs" />
+    <Compile Include="_NET_20\LINQ\Funcs.cs" />
+    <Compile Include="_NET_20\LINQ\Grouping.cs" />
+    <Compile Include="_NET_20\LINQ\HashPrimeNumbers.cs" />
+    <Compile Include="_NET_20\LINQ\HashSet.cs" />
+    <Compile Include="_NET_20\LINQ\IGrouping.cs" />
+    <Compile Include="_NET_20\LINQ\ILookup_T.cs" />
+    <Compile Include="_NET_20\LINQ\IOrderedEnumerable_T.cs" />
+    <Compile Include="_NET_20\LINQ\Lookup.cs" />
+    <Compile Include="_NET_20\LINQ\OrderedEnumerable.cs" />
+    <Compile Include="_NET_20\LINQ\OrderedSequence.cs" />
+    <Compile Include="_NET_20\LINQ\QuickSort.cs" />
+    <Compile Include="_NET_20\LINQ\SortContext.cs" />
+    <Compile Include="_NET_20\LINQ\SortDirection.cs" />
+    <Compile Include="_NET_20\LINQ\SortSequenceContext.cs" />
+    <Compile Include="_NET_20\StringBuilderCache.cs" />
+    <Compile Include="_NET_20\StringSerializer.cs" />
+    <Compile Include="_NET_20\TimeZoneInfo.cs" />
+    <Compile Include="_NET_20\TimeZoneNotFoundException.cs" />
+    <Compile Include="_NET_20\TransitionTime.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="CONTRIBUTING.md" />

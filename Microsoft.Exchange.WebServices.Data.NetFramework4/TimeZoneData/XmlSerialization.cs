@@ -70,7 +70,7 @@ namespace Microsoft.Exchange.WebServices.Data.TimeZoneData
         public static T DeserializeXmlFromEmbeddedRessource<T>(System.Reflection.Assembly asm, string resourceName)
         {
             string exactResourceName = FindName(asm, resourceName);
-            if (string.IsNullOrWhiteSpace(exactResourceName))
+            if (string.IsNullOrEmpty(exactResourceName) || exactResourceName.Trim() == string.Empty)
                 throw new System.IO.FileNotFoundException("No embedded resource called \"" + resourceName + "\" found.");
 
             return DeserializeXmlFromEmbeddedRessourceByExactName<T>(asm, exactResourceName);
