@@ -823,7 +823,7 @@
     <Compile Include="_NET_20\AdjustmentRule.cs" />
     <Compile Include="_NET_20\DaylightTimeStruct.cs" />
     <Compile Include="_NET_20\InvalidTimeZoneException.cs" />
-    <Compile Include="_NET_20\LINQ\ActiveDirectoryObjectNotFoundException.cs" />
+    <Compile Include="_NET_20\ActiveDirectoryObjectNotFoundException.cs" />
     <Compile Include="_NET_20\__TODO_NotImplemented.cs" />
     <Compile Include="_NET_20\LINQ\Check.cs" />
     <Compile Include="_NET_20\LINQ\Enumerable.cs" />
