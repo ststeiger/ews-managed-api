@@ -11,7 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
-    <PackageReference Include="System.DirectoryServices.AccountManagement" Version="4.5.0-rc1" />
+    <PackageReference Include="System.DirectoryServices.AccountManagement" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
